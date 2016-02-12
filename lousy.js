@@ -8,7 +8,6 @@ var client = new Twitter({
 });
  
  /*
-var params = {screen_name: 'madcolosimo'};
 
 client.get('statuses/user_timeline', params, function(error, tweets, response){
   if (!error) {
