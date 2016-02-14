@@ -1,3 +1,5 @@
+//setting up credentials
+
 var Twitter = require('twitter');
  
 var client = new Twitter({
@@ -9,67 +11,87 @@ var client = new Twitter({
 
 
 
-//below are other API calls, will use later...
+var tweetList = [];
+
+//below we've got a toolbox of basic API functions
 
 
-
-/*
-//get statuses of me, print out their ids
-client.get('statuses/user_timeline', {screen_name: 'The_Peter_Luft'}, function(error, response){
-	if(!error){
-		console.log("success");
-		//no error, then we've got an array from responses
-		for(var i = 0; i < response.length; i++){
-			console.log(response[i].id_str);
+//function returns tweets of target's screen name
+function getTweets(var targetName){
+	client.get('statuses/user_timeline', {screen_name: targetName}, function(error, response){
+		if(!error){
+			console.log("success");
+			//no error, then we've got an array from responses
+			for(var i = 0; i < response.length; i++){
+				console.log(response[i].text);
+				tweetList[i] = response[i].text;
+			}
 		}
-	}
-	else{
-		console.log(error);
-	}
-});
-
-*/
-
+		else{
+			console.log(error);
+		}
+	});
+	
+}	
 
 
-/*
+
+
+
+//get statuses of me, print out their ids
+function getTweetIds(var targetName){
+	client.get('statuses/user_timeline', {screen_name: targetName}, function(error, response){
+		if(!error){
+			console.log("success");
+			//no error, then we've got an array from responses
+			for(var i = 0; i < response.length; i++){
+				console.log(response[i].text);
+			}
+		}
+		else{
+			console.log(error);
+		}
+	});
+}
+
+
+
+//posts statusText string to twitter status
+function myStatusUpdate(var statusText){
+	client.post('statuses/update', {status: statusText}, function(error, tweets){
+		if(!error){
+			console.log("success");
+			//tweets is the returned info of the status update. I can grab data from it
+			console.log(tweets);
+		}
+		else{
+			console.log(error);
+		}
+	});
+
+}
+
+
+
+
 
 //destroys specific tweet
-
-var targetID = 
-client.post('statuses/destroy/' + targetID;, {}, function(error, tweets, response){
-	if(!error){
-		console.log("success");
-		//tweetID = tweets.id;
-		//console.log(tweetID);
-		console.log(response);
-	}
-	else{
-		console.log(error);
-	}
-});*/
-	
-	
-	 
- /*
-
-client.get('statuses/user_timeline', params, function(error, tweets, response){
-  if (!error) {
-    console.log(tweets);
-  }
-});
-*/
-
-
-
-/*
-function updateIt(){
-	client.post('statuses/update', {status: "what's shakin??"}, function(err, reply){
-				console.log("error: " + err);
-				console.log("reply: " + reply);
-			});
-		}, "json");
+function deleteTweet(var targetID){
+	client.post('statuses/destroy/' + targetID;, {}, function(error, tweets, response){
+		if(!error){
+			console.log("success");
+			//tweetID = tweets.id;
+			console.log(tweetID);
+			console.log(response);
+		}
+		else{
+			console.log(error);
+		}
+	});*/
 }
+
+
+
 
 function favRTs(){
 	client.get('statuses/retweets_of_me', {}, function(e, r){
@@ -79,7 +101,7 @@ function favRTs(){
 		console.log("Ran the favouriter");
 	});
 }
-*/
+
 
 /*
 
