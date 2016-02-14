@@ -3,10 +3,10 @@
 var Twitter = require('twitter');
  
 var client = new Twitter({
-  consumer_key: '5GCw6A1m07ruKuRXoSPRYLpOX',
-  consumer_secret: 'a8HJ6zmaRieoTyjRxXzZMgLy5sfdRkOz1dLsh8gDu1rySlqMo6',
-  access_token_key: '1107294740-ETzpIJvTatk5N6NqfiPNzHFmVGej0DsmKjwiS4K',
-  access_token_secret: 'yntEq90qFYdqHNQ2wC5LMDTl1TbpRNPK4oRylXh0C3k9W'
+  consumer_key: '',
+  consumer_secret: '',
+  access_token_key: '',
+  access_token_secret: ''
 });
 
 
