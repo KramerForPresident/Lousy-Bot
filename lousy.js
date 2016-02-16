@@ -13,17 +13,21 @@ var client = new Twitter({
 
 var tweetList = [];
 
+
+getTweets('The_Peter_Luft');
+
+
 //below we've got a toolbox of basic API functions
 
 
 //function returns tweets of target's screen name
-function getTweets(var targetName){
+function getTweets(targetName){
 	client.get('statuses/user_timeline', {screen_name: targetName}, function(error, response){
 		if(!error){
 			console.log("success");
 			//no error, then we've got an array from responses
 			for(var i = 0; i < response.length; i++){
-				console.log(response[i].text);
+				console.log(response[i].text + "\n");
 				tweetList[i] = response[i].text;
 			}
 		}
@@ -39,7 +43,7 @@ function getTweets(var targetName){
 
 
 //get statuses of me, print out their ids
-function getTweetIds(var targetName){
+function getTweetIds(targetName){
 	client.get('statuses/user_timeline', {screen_name: targetName}, function(error, response){
 		if(!error){
 			console.log("success");
@@ -57,7 +61,7 @@ function getTweetIds(var targetName){
 
 
 //posts statusText string to twitter status
-function myStatusUpdate(var statusText){
+function myStatusUpdate(statusText){
 	client.post('statuses/update', {status: statusText}, function(error, tweets){
 		if(!error){
 			console.log("success");
@@ -76,8 +80,8 @@ function myStatusUpdate(var statusText){
 
 
 //destroys specific tweet
-function deleteTweet(var targetID){
-	client.post('statuses/destroy/' + targetID;, {}, function(error, tweets, response){
+function deleteTweet(targetID){
+	client.post('statuses/destroy/' + targetID, {}, function(error, tweets, response){
 		if(!error){
 			console.log("success");
 			//tweetID = tweets.id;
@@ -87,7 +91,7 @@ function deleteTweet(var targetID){
 		else{
 			console.log(error);
 		}
-	});*/
+	});
 }
 
 
@@ -101,6 +105,7 @@ function favRTs(){
 		console.log("Ran the favouriter");
 	});
 }
+
 
 
 /*
